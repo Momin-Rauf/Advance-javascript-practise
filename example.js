@@ -225,10 +225,22 @@ console.log("This is our HTML CSS JS website lessgo")
 
 
 // const x = document.getElementById('a');
-
+// const b = document.getElementById('b');
+// const y = document.getElementById('c');
 // const clickHandler = ()=>{
-//     if(x.classList[1]==='class2'){
+    // if(x.classList.contain('class2')) orrrr
+    
+    // const add = document.createElement('x');
+    // add.textContent='by';
+    // add.innerHTML='<h1>Hello</h1>'
+    // b.append(add);
 
+    //clonnig
+//     const abcClone = y.cloneNode(true);
+//     b.append(abcClone);
+
+//     if(x.classList[1]==='class2'){
+        
 //         x.classList.remove("class2");
 //         b.childNodes[0].textContent = 'white';
 //         console.log(2)
@@ -240,3 +252,57 @@ console.log("This is our HTML CSS JS website lessgo")
 //         }
 // }
 
+
+//---------------------------Very important--------------------->>
+//------------------------Static vs live list------------------->>
+
+// when we use queryselector it selects static list means the appended elements will not be shown in html collection
+// but getelementby gives you live list
+
+//----------------boundries
+
+// const x = document.getElementById('a');
+// let info = x.getBoundingClientRect().height;
+// console.log(info)
+
+
+//---important----
+/*
+if we use arrow function the value of this is window
+but if we use function(){}  the value of this is the element calling it
+*/
+// const button = document.getElementById('btn');
+// button.addEventListener('click',()=>{
+//     console.log(this);
+// })
+// button.addEventListener('click',function(){
+//     console.log(this);
+//     this.style.backgroundColor='red';
+// })
+
+//to use this as a element with arrow function we replace (this) by event
+
+
+// event listeners keypress mouseover mouseleave
+
+const body = document.body;
+let interval;
+const random = ()=>{
+    const red = Math.floor(Math.random() *256);
+    const green = Math.floor(Math.random() *256);
+    const blue = Math.floor(Math.random() *256);
+    const RanNum = `rgb(${red},${green},${blue})`;
+    return RanNum;
+}   
+body.addEventListener('keypress',(e)=>{
+    console.log(e.key);
+    if(e.key==='Enter'){
+       interval = setInterval(() => {
+            body.style.backgroundColor = random();
+        },300)
+    }
+    else if(e.key==='f'){
+        clearInterval(interval);
+        body.style.backgroundColor = 'white';
+    }
+});
